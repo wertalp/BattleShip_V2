@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, I am a TextView" />
+    <Button android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, I am a Button" />
+
+    <DigitalClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/digitalClock"
+        android:layout_gravity="right" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="344dp"
+        android:id="@+id/levelbox">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button4" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button5" />
+
+
+        <ImageView
+            android:layout_width="135dp"
+            android:layout_height="69dp"
+            android:src="@drawable/bar_bg"
+            android:id="@+id/imageView" />
+
+        <ImageView
+            android:layout_width="135dp"
+            android:layout_height="69dp"
+            android:src="@drawable/bar_bg"
+            android:id="@+id/imageView2" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button6" />
+
+</LinearLayout>

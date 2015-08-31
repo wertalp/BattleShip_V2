@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MOOSE SOFTWAREZ @PW</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2activity">main2activity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_shooter">ShooterActivity</string>
+</resources>
