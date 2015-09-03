@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by wertalp on 31.08.15.
  */
 public class ShooterActivity extends ActionBarActivity {
-
+  CellButton CurrButton;
 
 
     @Override
@@ -19,8 +21,28 @@ public class ShooterActivity extends ActionBarActivity {
 
 
         ChessBoard chessboard = new ChessBoard(ShooterActivity.this) ;
-        chessboard.create();
+        //chessboard.create();
+        setButtonsEvents(chessboard.getallcells());
 
+
+    }
+
+
+
+    private void setButtonsEvents(CellButton[] cells) {
+        for (CellButton cell : cells) {
+            cell.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CellButton b = (CellButton) v;
+                    CurrButton = b;
+                    Toast.makeText(getApplicationContext(), "" + b.getPositionText(), Toast.LENGTH_SHORT).show();
+                    b.setBackgroundResource(R.drawable.cross);
+                    //show_popup();
+                }
+            });
+
+        }
 
     }
 

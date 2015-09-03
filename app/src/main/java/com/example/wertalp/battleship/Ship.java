@@ -15,6 +15,7 @@ import android.widget.ImageButton;
  * Created by wertalp on 26.08.15.
  */
 public class Ship {
+    Integer shipId ;
     Context ctx;
     Button button;
     String name;
@@ -22,15 +23,27 @@ public class Ship {
     Shape  shape;
     Integer hSpan = 1;
     Integer vSpan = 1;
-    GridLayout board;
+    GridLayout board ;
+    Drawable picture ;
 
-    public Ship(Button button, String name, Point position, Shape shape) {
-        this.button = button;
-        this.name = name;
-        this.position = position;
-        this.shape = shape;
+    public Ship(Button button, String name, Point position, Shape shape,Integer id) {
+        this.button   = button   ;
+        this.name     = name     ;
+        this.position = position ;
+        this.shipId   = id       ;
+        //this.shape    = shape;
     }
 
+    public Ship(Button button,  Point position) {
+        this.button    = button   ;
+        this.position  = position ;
+
+    }
+
+
+    public Ship() {
+
+    }
     public Ship(GridLayout board)
     {
         this.board = board;
@@ -42,9 +55,36 @@ public class Ship {
     }
 
 
+    public Point getPosition() {
+        return position;
+    }
 
+    public void setPosition(Point position) {
+        this.position = position;
+    }
 
+    public Integer getShipId() {
+        return shipId;
+    }
 
+    public void setShipId(Integer shipId) {
+        this.shipId = shipId;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Drawable getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Drawable picture) {
+        this.picture = picture;
+    }
 }
 // new Ship.

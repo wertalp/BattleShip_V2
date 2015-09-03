@@ -23,51 +23,43 @@ import android.widget.Toast;
  */
 public class ChessBoard {
 
-    int heigth   ;
-    int width    ;
-    Activity activity  ;
+    int            heigth    ;
+    int            width     ;
+    Activity       activity  ;
+    GridLayout     board     ;
+    Display        display   ;
+    int            laenge    ;
+    int            breite    ;
+    LayoutInflater inflater  ;
+    PopupWindow    pw        ;
+    Button         Butty     ;
+    CellButton[]   liCellBut ;
+    //Ship[] ships = new Ship[50];
 
-    GridLayout board ;
-    Display display;
-    int laenge ;
-    int breite ;
-    LayoutInflater inflater;
-    PopupWindow pw;
-    static int i=0;
-
-
-    Ship[] ships = new Ship[50];
-
-    Button Butty;
-    CellButton[] liCellBut;
 
 
     public ChessBoard(Activity activity) {
-        this.activity = activity;
-        this.display = activity.getWindowManager().getDefaultDisplay();
 
-        this.heigth = display.getHeight();
-        this.width  = display.getWidth() ;
+        this.activity = activity;
+        this.display  = activity.getWindowManager().getDefaultDisplay();
+        this.heigth   = display.getHeight();
+        this.width    = display.getWidth() ;
+        this.create();
 
     }
 
-    public int getHeigth() {
+    public int  getHeigth() {
         return heigth;
     }
-
     public void setHeigth(int heigth) {
         this.heigth = heigth;
     }
-
-    public int getWidth() {
+    public int  getWidth() {
         return width;
     }
-
     public void setWidth(int width) {
         this.width = width;
     }
-
-
     public void create() {
 
         int width = display.getWidth();
@@ -115,39 +107,38 @@ public class ChessBoard {
                 }
                 if ((i != 0) &&(j !=0)) {
 
-                    button.setOnClickListener(new View.OnClickListener() {
+                    //button.setOnClickListener(new View.OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
+                     //   @Override
+                     //   public void onClick(View v) {
 
-                            CellButton b = (CellButton) v;
-                            Toast.makeText(getActivity().getBaseContext(), "" + b.getPositionText(), Toast.LENGTH_SHORT).show();
-                            b.setBackgroundResource(com.example.wertalp.battleship.R.drawable.cross);
-                            Butty = b;
+                        //    CellButton b = (CellButton) v;
+                        //    Toast.makeText(getActivity().getBaseContext(), "" + b.getPositionText(), Toast.LENGTH_SHORT).show();
+                        //    b.setBackgroundResource(com.example.wertalp.battleship.R.drawable.cross);
+                        //    Butty = b;
+                        //    Ship cur_Ship = new Ship(board);
 
-                            Ship cur_Ship = new Ship(board);
+                         //   show_popup(b);
 
-                            show_popup(b);
+                       // }
 
-                        }
-
-                    })
+                    //})
 
                     ;};
 
             }
-        }     //  create Methode Fine
+        }     //  create Methode ende
 
     }  // End Create
-
     public CellButton[] getallcells(){
-        int l =0;
-
+        int l = 0;
+         liCellBut = new CellButton[board.getChildCount()];
         for (int i =0;i<= board.getChildCount();i++){
-            View  tmpView = board.getChildAt(i);
+            View  tmpView = (View) board.getChildAt(i);
+            //Toast.makeText(getActivity(),tmpView.getClass().getName(),Toast.LENGTH_SHORT).show();
             if (tmpView instanceof CellButton){
 
-
+                //Toast.makeText(getActivity(),"CellButt",Toast.LENGTH_SHORT).show();
                 liCellBut[l] = (CellButton) tmpView;
                 l++;
             }
@@ -158,70 +149,17 @@ public class ChessBoard {
 
     }
 
-    private  void show_popup(Button b) {
-
-        inflater = LayoutInflater.from(activity);
-        pw = new PopupWindow(inflater.inflate(R.layout.ship_choose2, null, false),1200,1600, true);
-        View viewPopup =(View) pw.getContentView();
-        pw.showAtLocation(activity.findViewById(com.example.wertalp.battleship.R.id.rel), Gravity.CENTER, 0, 0);
-
-
-        add_listener((ViewGroup) viewPopup);
-
-        ImageButton imgB1 = (ImageButton) viewPopup.findViewById(com.example.wertalp.battleship.R.id.imgBShip1a);
-        ImageButton imgB2 = (ImageButton) viewPopup.findViewById(com.example.wertalp.battleship.R.id.imgBShip1b);
-        ImageButton imgB3 = (ImageButton) viewPopup.findViewById(com.example.wertalp.battleship.R.id.imgBShip1c);
-        ImageButton imgB4 = (ImageButton) viewPopup.findViewById(com.example.wertalp.battleship.R.id.imgBShip1d);
-        ImageButton imgB5 = (ImageButton) viewPopup.findViewById(com.example.wertalp.battleship.R.id.imgBShip1e);
-
-    }
-
-    private void add_listener(ViewGroup viewPopup) {
-
-        ViewGroup v1 = (ViewGroup) viewPopup.findViewById(com.example.wertalp.battleship.R.id.linView);
-        for(int i=0; i < v1.getChildCount(); i++)
-        {
-            View v = v1.getChildAt(i);
-            if (v instanceof ImageButton) {
-
-                ImageButton b = (ImageButton) v;
-
-                b.setOnClickListener(myClickListener);
-            }
-        }
-
-    }
-
-    private View.OnClickListener myClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-
-
-            Drawable shippicture = v.getBackground();
-
-
-            Ship cur_Ship = new Ship(board);
-            cur_Ship.add_ship_to_view(Butty, shippicture);
-            cur_Ship.name = "testboot_"+i;
-            ships[i]= cur_Ship;
-            pw.dismiss();
-            Toast.makeText(getActivity().getBaseContext(), "" + ships[i].name, Toast.LENGTH_SHORT).show();
-            i++;
-
-        }
-
-        ;
-
-    };
-// new Board create
+//  new Board create
 //
 //
-
     public Activity getActivity () {
         return activity;
     }
-
     public void setActivity (Activity activity){
         this.activity = activity;
     };
+
+
+
 
 }

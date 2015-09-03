@@ -4,13 +4,14 @@ package com.example.wertalp.battleship;
  * Created by wertalp on 31.08.15.
  */
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 /**
  * Created by wertalp on 28.08.15.
  */
-public class CellButton extends Button{
+public class CellButton extends Button implements View.OnClickListener{
     int xField ;
     int yField ;
     Context ctx;
@@ -40,4 +41,11 @@ public class CellButton extends Button{
         return "Position X/Y"+getxField()+":"+getyField();
 
     };
+
+
+    @Override
+    public void onClick(View v) {
+
+
+    }
 }
